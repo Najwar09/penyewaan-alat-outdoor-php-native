@@ -1,51 +1,28 @@
 <?php
-
+session_start();
     require '../../koneksi/koneksi.php';
-    $title_web = 'Daftar Booking';
     include '../header.php';
-    if(empty($_SESSION['USER']))
+    if($_GET['cari'])
     {
-        session_start();
-    }
-    if(!empty($_GET['id'])){
-        $id = strip_tags($_GET['id']);
-        $sql = "SELECT alat.harga, booking.* FROM booking JOIN alat ON 
-                booking.id_alat=alat.id_alat WHERE id_login = '$id' ORDER BY id_booking DESC";
+        $cari = strip_tags($_GET['cari']);
+        $query =  $koneksi -> query('SELECT * FROM booking WHERE nama LIKE "%'.$cari.'%" ORDER BY id_alat DESC')->fetchAll();
     }else{
-        $sql = "SELECT alat.harga, booking.* FROM booking JOIN alat ON 
-                booking.id_alat=alat.id_alat ORDER BY id_booking DESC";
+        $query =  $koneksi -> query('SELECT * FROM alat ORDER BY id_alat DESC')->fetchAll();
     }
-    $hasil = $koneksi->query($sql)->fetchAll();
 ?>
 
-<br>
-<div class="container">
 
-    <div class="card">
-        <div class="card-header text-white bg-primary">
-            <div class="flex justify-between">
-                <h5 class="card-title">
-                Daftar Booking
-                </h5>
-
-                <div class="">
-                <form class="form-inline" method="get" action="filter.php">
-                    <input class="form-control mr-sm-2" type="search" name="cari" placeholder="Cari Nama Booking" aria-label="Search">
-                    <button class="btn my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </div>
-            </div>
-        </div>
-    </div>
-        
-
-        
-
-
-        
-        <div class="card-body">
+<div class="card-body">
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-sm">
+                <?php 
+                  if($_GET['cari'])
+                {
+                    echo '<h4> Keyword Pencarian : '.$cari.'</h4>';
+                }else{
+                    echo '<h4> Semua Daftar Booking</h4>';
+                }
+                ?>
                     <thead>
                         <tr>
                             <th>No. </th>
@@ -59,7 +36,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php  $no=1; foreach($hasil as $isi){?>
+                        <?php  $no=1; foreach($query as $isi){?>
                         <tr>
                             <td><?php echo $no;?></td>
                             <td><?= $isi['kode_booking'];?></td>

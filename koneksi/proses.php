@@ -78,7 +78,7 @@ if($_GET['id'] == 'booking')
 {
     $total = $_POST['total_harga'] * $_POST['lama_sewa'];
     $unik  = random_int(100,999);
-    $total_harga = $total+$unik;
+    $total_harga = $total;
 
     $data[] = time();
     $data[] = $_POST['id_login'];
