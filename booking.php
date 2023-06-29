@@ -62,11 +62,12 @@
                     <div class="form-group">
                       <label for="">Tanggal Sewa</label>
                       <input type="date" name="tanggal" id="" required class="form-control" placeholder="Nama Anda">
-                    </div> 
+                    </div>
                     <div class="form-group">
-                      <label for="">Lama Sewa</label>
-                      <input type="number" name="lama_sewa" id="" required class="form-control" placeholder="Lama Sewa">
+                      <label for="">Tanggal Pengembalian</label>
+                      <input type="date" name="tanggal_kembali" id="" required class="form-control" placeholder="Nama Anda">
                     </div> 
+                    
                     <input type="hidden" value="<?php echo $_SESSION['USER']['id_login'];?>" name="id_login">
                     <input type="hidden" value="<?php echo $isi['id_alat'];?>" name="id_alat">
                     <input type="hidden" value="<?php echo $isi['harga'];?>" name="total_harga">

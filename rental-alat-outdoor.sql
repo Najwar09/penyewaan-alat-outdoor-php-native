@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Jun 2023 pada 19.44
+-- Waktu pembuatan: 29 Jun 2023 pada 11.48
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 8.0.10
 
@@ -59,7 +59,7 @@ CREATE TABLE `booking` (
   `alamat` varchar(255) NOT NULL,
   `no_tlp` varchar(15) NOT NULL,
   `tanggal` varchar(255) NOT NULL,
-  `lama_sewa` int(11) NOT NULL,
+  `tanggal_kembali` varchar(255) NOT NULL,
   `total_harga` int(11) NOT NULL,
   `konfirmasi_pembayaran` varchar(255) NOT NULL,
   `tgl_input` varchar(255) NOT NULL
@@ -69,9 +69,10 @@ CREATE TABLE `booking` (
 -- Dumping data untuk tabel `booking`
 --
 
-INSERT INTO `booking` (`id_booking`, `kode_booking`, `id_login`, `id_alat`, `ktp`, `nama`, `alamat`, `no_tlp`, `tanggal`, `lama_sewa`, `total_harga`, `konfirmasi_pembayaran`, `tgl_input`) VALUES
-(12, '1687332858', 5, 11, '4938498', 'eka', 'cen', '898989', '2023-06-21', 2, 600163, 'Pembayaran di terima', '2023-06-21'),
-(13, '1687366713', 5, 9, '549859', 'mande', 'btn', '490294029', '2023-06-23', 3, 600644, 'Sedang di proses', '2023-06-21');
+INSERT INTO `booking` (`id_booking`, `kode_booking`, `id_login`, `id_alat`, `ktp`, `nama`, `alamat`, `no_tlp`, `tanggal`, `tanggal_kembali`, `total_harga`, `konfirmasi_pembayaran`, `tgl_input`) VALUES
+(1, '1688030636', 4, 9, '1', 'a', 'a', '1', '2023-06-01', '2023-06-02', 200000, 'Belum Bayar', '2023-06-29'),
+(2, '1688030765', 4, 9, '2', 'b', 'b', '2', '2023-06-01', '2023-06-02', 200000, 'Belum Bayar', '2023-06-29'),
+(3, '1688030791', 4, 9, '2', 'b', 'b', '2', '2023-06-07', '2023-06-10', 600000, 'Belum Bayar', '2023-06-29');
 
 -- --------------------------------------------------------
 
@@ -134,14 +135,6 @@ CREATE TABLE `pembayaran` (
   `tanggal` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `pembayaran`
---
-
-INSERT INTO `pembayaran` (`id_pembayaran`, `id_booking`, `no_rekening`, `nama_rekening`, `nominal`, `tanggal`) VALUES
-(10, 12, 9302930, 'eka', 600000, '2023-06-21'),
-(11, 13, 950490, 'mande', 40904290, '2023-06-23');
-
 -- --------------------------------------------------------
 
 --
@@ -203,7 +196,7 @@ ALTER TABLE `alat`
 -- AUTO_INCREMENT untuk tabel `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id_booking` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_booking` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `login`
@@ -215,7 +208,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT untuk tabel `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengembalian`

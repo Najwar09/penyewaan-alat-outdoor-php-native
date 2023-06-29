@@ -74,10 +74,21 @@ if($_GET['id'] == 'daftar')
 
 
 
+
+
+
 if($_GET['id'] == 'booking')
 {
-    $total = $_POST['total_harga'] * $_POST['lama_sewa'];
-    $unik  = random_int(100,999);
+    $tanggalAwal = $_POST['tanggal'];
+    $tanggalAkhir = $_POST['tanggal_kembali'];
+
+    $dateAwal = new DateTime($tanggalAwal);
+    $dateAkhir = new DateTime($tanggalAkhir);
+
+    $selisih = $dateAwal->diff($dateAkhir)->format("%a");
+
+
+    $total = $_POST['total_harga'] * $selisih;
     $total_harga = $total;
 
     $data[] = time();
@@ -88,7 +99,7 @@ if($_GET['id'] == 'booking')
     $data[] = $_POST['alamat'];
     $data[] = $_POST['no_tlp'];
     $data[] = $_POST['tanggal'];
-    $data[] = $_POST['lama_sewa'];
+    $data[] = $_POST['tanggal_kembali'];
     $data[] = $total_harga;
     $data[] = "Belum Bayar";
     $data[] = date('Y-m-d');
@@ -100,7 +111,7 @@ if($_GET['id'] == 'booking')
     nama, 
     alamat, 
     no_tlp, 
-    tanggal, lama_sewa, total_harga, konfirmasi_pembayaran, tgl_input) 
+    tanggal, tanggal_kembali, total_harga, konfirmasi_pembayaran, tgl_input) 
         VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
     $row = $koneksi->prepare($sql);
     $row->execute($data);
@@ -108,6 +119,11 @@ if($_GET['id'] == 'booking')
     echo '<script>alert("Anda Sukses Booking silahkan Melakukan Pembayaran");
     window.location="../bayar.php?id='.time().'";</script>'; 
 }
+
+
+
+
+
 
 if($_GET['id'] == 'konfirmasi')
 {

@@ -43,7 +43,7 @@
       <th scope="col">Kode Booking</th>
       <th scope="col">Nama</th>
       <th scope="col">Tanggal Sewa</th>
-      <th scope="col">Lama Sewa</th>
+      <th scope="col">Tanggal Kembali</th>
       <th scope="col">Total Harga</th>
       <th scope="col">Konfirmasi</th>
       
@@ -55,7 +55,7 @@
       <td><?php echo $hasil['kode_booking'];?></td>
       <td><?php echo $hasil['nama'];?></td>
       <td><?php echo $hasil['tanggal'];?></td>
-      <td><?php echo $hasil['lama_sewa'];?> hari</td>
+      <td><?php echo $hasil['tanggal_kembali'];?></td>
       <td>Rp. <?= number_format($hasil['total_harga']);?></td>
       <td><?php echo $hasil['konfirmasi_pembayaran'];?></td>
       

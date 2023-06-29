@@ -29,8 +29,9 @@
                 </h5>
 
                 <div class="">
-                <form class="form-inline" method="get" action="filter.php">
-                    <input class="form-control mr-sm-2" type="search" name="cari" placeholder="Cari Nama Booking" aria-label="Search">
+                <form class="form-inline" method="post" action="filter.php">
+                    <input class="form-control mr-sm-2" type="date" name="tanggal" placeholder="Cari Nama Booking" aria-label="Search">
+                    <input class="form-control mr-sm-2" type="date" name="tanggal_kembali" placeholder="Cari Nama Booking" aria-label="Search">
                     <button class="btn my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
@@ -52,7 +53,7 @@
                             <th>Kode Booking</th>
                             <th>Nama </th>
                             <th>Tanggal Sewa </th>
-                            <th>Lama Sewa </th>
+                            <th>Tanggal Kembali </th>
                             <th>Total Harga</th>
                             <th>Konfirmasi</th>
                             <th>Aksi</th>
@@ -65,7 +66,7 @@
                             <td><?= $isi['kode_booking'];?></td>
                             <td><?= $isi['nama'];?></td>
                             <td><?= $isi['tanggal'];?></td>
-                            <td><?= $isi['lama_sewa'];?> hari</td>
+                            <td><?= $isi['tanggal_kembali'];?></td>
                             <td>Rp. <?= number_format($isi['total_harga']);?></td>
                             <td><?= $isi['konfirmasi_pembayaran'];?></td>
                             <td>

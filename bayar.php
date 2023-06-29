@@ -92,9 +92,9 @@
                             <td><?php echo $hasil['tanggal'];?></td>
                         </tr>
                         <tr>
-                            <td>Lama Sewa </td>
+                            <td>Tanggal Kembali </td>
                             <td> :</td>
-                            <td><?php echo $hasil['lama_sewa'];?> hari</td>
+                            <td><?php echo $hasil['tanggal_kembali'];?></td>
                         </tr>
                         <tr>
                             <td>Total Harga </td>
